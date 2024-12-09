@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Шапка сайта */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-menu ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.profile-section a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 15px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon, .profile-icon {
+    display: flex;
+    align-items: center;
+    background-color: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.cart-icon:hover, .profile-icon:hover {
+    background-color: #dee2e6;
+}
+
+.cart-icon i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.cart-icon span {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.profile-icon i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.profile-icon span {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+/* Library content styles */
+.library-content {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.games-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.game-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-cover {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.game-details {
+    padding: 10px;
+}
+
+.game-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.play-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.play-button:hover {
+    background-color: #218838;
+}
+
+.game-hours {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.friends-played {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.game-description {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.achievements-list {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.achievement {
+    background-color: #e9ecef;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Попап для сообщения "В разработке" */
+#development-popup {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное позиционирование */
+    z-index: 1001; /* Выше всех остальных элементов */
+    right: 20px;
+    bottom: 20px;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+#development-popup .popup-content {
+    position: relative;
+}
+
+#development-popup .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#development-popup h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#development-popup p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Футер сайта */
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.column h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.column a {
+    text-decoration: none;
+    color: #ccc;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Стили для иконок соцсетей */
+.social-icons a {
+    color: #ccc;
+    font-size: 24px;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #ccc;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека Игр | GameFORGE</title>
+    <link rel="stylesheet" href="styles-library.css">
+    <link rel="icon" href="img/logo.png" type="image/icon type">
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="img/GameForge Logo_Black.png" alt="GameFORGE Logo"></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="library.html">Библиотека</a></li>
+            </ul>
+        </nav>
+        <div class="profile-section">
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="profile-icon">Профиль</a>
+        </div>
+    </header>
+
+    <!-- Основной контент библиотеки -->
+    <main class="library-content">
+        <h2 class="section-title">МОЯ БИБЛИОТЕКА ИГР</h2>
+        <div id="games-list" class="games-list">
+            <!-- Games will be dynamically added here -->
+        </div>
+    </main>
+
+    <!-- Попап для сообщения "В разработке" -->
+    <div id="development-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Извините, эта функция в разработке!</h3>
+            <p>Мы работаем над этим и скоро всё будет готово.</p>
+        </div>
+    </div>
+
+    <!-- Футер сайта -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/GameForge Logo_White.png" alt="GameFORGE Logo">
+        </div>
+        <div class="footer-links">
+            <div class="column">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Работа</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Политика</h4>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Соглашение</a></li>
+                    <li><a href="#">Возврат</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="https://vk.com" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 GameFORGE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script-library.js"></script>
+</body>
+</html>

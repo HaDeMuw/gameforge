@@ -1,0 +1,497 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-menu ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon, .profile-icon {
+    display: flex;
+    align-items: center;
+    background-color: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.cart-icon:hover, .profile-icon:hover {
+    background-color: #dee2e6;
+}
+
+.cart-icon i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.cart-icon span {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.profile-icon i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.profile-icon span {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+/* Cart content */
+.cart-content {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.remove-button {
+    background-color: #f8d7da;
+    border: none;
+    color: #721c24;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.remove-button:hover {
+    background-color: #f5c6cb;
+    color: #495057;
+}
+
+.cart-item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    font-size: 16px;
+    color: #333;
+    margin-left: auto;
+    text-align: right;
+}
+
+.cart-item.non-purchasable {
+    opacity: 0.6;
+}
+
+.cart-item.non-purchasable .cart-item-price .fa-ban {
+    color: red;
+    margin-right: 5px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+.total-label {
+    font-weight: normal;
+}
+
+.total-value {
+    font-weight: bold;
+}
+
+.checkout-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    align-self: flex-end;
+}
+
+.checkout-button:hover {
+    background-color: #218838;
+}
+
+.checkout-button:disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+/* Modal for payment */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.card-animation-container {
+    position: relative;
+    width: 300px;
+    height: 180px;
+    margin: 0 auto 20px;
+    perspective: 1000px;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front {
+    background: linear-gradient(135deg, #4c4c4c, #2b2b2b);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    z-index: 2;
+}
+
+.card-back {
+    background: linear-gradient(135deg, #4c4c4c, #2b2b2b);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.card-back .magnetic-strip {
+    background-color: #000;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 20px;
+}
+
+.card-back .card-cvc {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.card-logo {
+    align-self: flex-end;
+}
+
+.card-logo img {
+    width: 50px;
+}
+
+.card-number, .card-holder, .card-expiry {
+    font-family: 'Courier New', monospace;
+}
+
+.card-number {
+    font-size: 20px;
+    text-align: center;
+}
+
+.card-holder, .card-expiry {
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.card-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.card-details {
+    display: flex;
+    gap: 10px;
+}
+
+.card-details input {
+    width: 100%;
+}
+
+/* Animation for card flip */
+.card-animation-container:hover .card-front {
+    transform: rotateY(180deg);
+}
+
+.card-animation-container:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+.modal-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.modal-button:hover {
+    background-color: #218838;
+}
+
+/* Popups */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 20px;
+    bottom: 20px;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.popup-content {
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup h3 {
+    margin-bottom: 10px;
+}
+
+.popup p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Попап для сообщения "В разработке" */
+#development-popup {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное позиционирование */
+    z-index: 1001; /* Выше всех остальных элементов */
+    right: 20px;
+    bottom: 20px;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+#development-popup .popup-content {
+    position: relative;
+}
+
+#development-popup .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#development-popup h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#development-popup p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Футер сайта */
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.column h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.column a {
+    text-decoration: none;
+    color: #ccc;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Стили для иконок соцсетей */
+.social-icons a {
+    color: #ccc;
+    font-size: 24px;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #ccc;
+}

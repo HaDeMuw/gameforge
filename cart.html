@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина | GameFORGE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-cart.css">
+    <link rel="icon" href="img/logo.png" type="image/icon type">
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="img/GameForge Logo_Black.png" alt="GameFORGE Logo"></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="library.html">Библиотека</a></li>
+            </ul>
+        </nav>
+        <div class="profile-section">
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="profile-icon">Профиль</a>
+        </div>
+    </header>
+
+    <!-- Содержимое корзины -->
+    <div class="cart-content">
+        <h2 class="section-title">КОРЗИНА</h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="total-price">0 руб.</span>
+        </div>
+        <button class="checkout-button">Оформить заказ</button>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <div class="card-animation-container">
+                <div class="card-front">
+                    <div class="card-logo"><img src="img/GameForge Logo_White.png" alt="Card Logo"></div>
+                    <div class="card-number">**** **** **** ****</div>
+                    <div class="card-holder">Card Holder</div>
+                    <div class="card-expiry">MM/YY</div>
+                </div>
+                <div class="card-back">
+                    <div class="card-cvc">CVC: ***</div>
+                    <div class="magnetic-strip"></div>
+                </div>
+            </div>
+            <h2>Оформление заказа</h2>
+            <div class="form-group">
+                <label for="card-number">Номер карты</label>
+                <input type="text" id="card-number" class="card-input" placeholder="Введите номер карты" maxlength="19" required>
+            </div>
+            <div class="form-group">
+                <label for="card-holder">Имя владельца</label>
+                <input type="text" id="card-holder" class="card-input" placeholder="Имя владельца" required>
+            </div>
+            <div class="form-group card-details">
+                <div>
+                    <label for="card-expiry">Срок действия</label>
+                    <input type="text" id="card-expiry" class="card-input" placeholder="MM/YY" maxlength="5" required>
+                </div>
+                <div>
+                    <label for="card-cvc">CVC</label>
+                    <input type="text" id="card-cvc" class="card-input" placeholder="CVC" maxlength="3" required>
+                </div>
+            </div>
+            <button id="submit-payment" class="modal-button">Оплатить</button>
+        </div>
+    </div>
+
+    <!-- Попап успешной оплаты -->
+    <div id="success-payment-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Оплата прошла успешно!</h3>
+            <p>Спасибо за покупку!</p>
+        </div>
+    </div>
+
+    <!-- Попап пустой корзины -->
+    <div id="empty-cart-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Корзина пуста</h3>
+            <p>Пожалуйста, добавьте товары в корзину перед оформлением заказа.</p>
+        </div>
+    </div>
+
+    <!-- Попап для сообщения "В разработке" -->
+    <div id="development-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Извините, эта функция в разработке!</h3>
+            <p>Мы работаем над этим и скоро всё будет готово.</p>
+        </div>
+    </div>
+
+    <!-- Футер сайта -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/GameForge Logo_White.png" alt="GameFORGE Logo">
+        </div>
+        <div class="footer-links">
+            <div class="column">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Работа</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Политика</h4>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Соглашение</a></li>
+                    <li><a href="#">Возврат</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="https://vk.com" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 GameFORGE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script-cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameFORGE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/logo.png" type="image/icon type">
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="img/GameForge Logo_Black.png" alt="GameFORGE Logo"></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="library.html">Библиотека</a></li>
+            </ul>
+        </nav>
+        <div class="profile-section">
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="profile-icon">Профиль</a>
+        </div>
+    </header>
+    <!-- Слайдер -->
+    <div class="slider">
+        <div class="slide-track">
+            <img class="slide" src="img/slider/game1.png" alt="Slide 1">
+            <img class="slide" src="img/slider/game2.png" alt="Slide 2">
+            <img class="slide" src="img/slider/game3.png" alt="Slide 3">
+        </div>
+    </div>
+
+    <!-- Блок с популярными играми -->
+    <div class="popular-games">
+        <h2 class="section-title">ПОПУЛЯРНОЕ</h2>
+        <div class="game-container active" id="game1">
+            <div class="game-image">
+                <img src="img/game1/game1_large.jpg" alt="Game Large Image">
+            </div>
+            <div class="game-info">
+                <h3 class="game-title">Elden Ring</h3>
+                <p class="game-description">
+                    НОВЫЙ ФЭНТЕЗИЙНЫЙ РОЛЕВОЙ БОЕВИК. Восстань, погасшая душа! Междуземье ждёт своего повелителя. Пусть благодать приведёт тебя к Кольцу Элден.
+                </p>
+                <div class="game-thumbnails">
+                    <img src="img/game1/game1_thumb1.jpg" alt="Thumbnail 1" data-src="img/game1/game1_thumb1.jpg">
+                    <img src="img/game1/game1_thumb2.jpg" alt="Thumbnail 2" data-src="img/game1/game1_thumb2.jpg">
+                    <img src="img/game1/game1_thumb3.jpg" alt="Thumbnail 3" data-src="img/game1/game1_thumb3.jpg">
+                    <img src="img/game1/game1_thumb4.jpg" alt="Thumbnail 4" data-src="img/game1/game1_thumb4.jpg">
+                </div>
+                <div class="game-action">
+                    <button class="buy-button" data-id="game1">Купить</button>
+                    <span class="game-price">3599 руб.</span>
+                </div>
+            </div>
+        </div>
+        <div class="game-container" id="game2">
+            <div class="game-image">
+                <img src="img/game2/game2_large.jpg" alt="Game Large Image">
+            </div>
+            <div class="game-info">
+                <h3 class="game-title">Cyberpunk 2077</h3>
+                <p class="game-description">
+                    Погрузитесь в мир Найт 시та, где технологии и мифология переплетаются в невероятную сеть городских легенд.
+                </p>
+                <div class="game-thumbnails">
+                    <img src="img/game2/game2_thumb1.jpg" alt="Thumbnail 1" data-src="img/game2/game2_thumb1.jpg">
+                    <img src="img/game2/game2_thumb2.jpg" alt="Thumbnail 2" data-src="img/game2/game2_thumb2.jpg">
+                    <img src="img/game2/game2_thumb3.jpg" alt="Thumbnail 3" data-src="img/game2/game2_thumb3.jpg">
+                    <img src="img/game2/game2_thumb4.jpg" alt="Thumbnail 4" data-src="img/game2/game2_thumb4.jpg">
+                </div>
+                <div class="game-action">
+                    <button class="buy-button" data-id="game2">Купить</button>
+                    <span class="game-price">4999 руб.</span>
+                </div>
+            </div>
+        </div>
+        <div class="game-container" id="game3">
+            <div class="game-image">
+                <img src="img/game3/game3_large.jpg" alt="Game Large Image">
+            </div>
+            <div class="game-info">
+                <h3 class="game-title">The Witcher 3: Wild Hunt</h3>
+                <p class="game-description">
+                    Один из самых ожидаемых ролевых игр всех времен. Погрузитесь в эпическую историю Героя Охоты.
+                </p>
+                <div class="game-thumbnails">
+                    <img src="img/game3/game3_thumb1.jpg" alt="Thumbnail 1" data-src="img/game3/game3_thumb1.jpg">
+                    <img src="img/game3/game3_thumb2.jpg" alt="Thumbnail 2" data-src="img/game3/game3_thumb2.jpg">
+                    <img src="img/game3/game3_thumb3.jpg" alt="Thumbnail 3" data-src="img/game3/game3_thumb3.jpg">
+                    <img src="img/game3/game3_thumb4.jpg" alt="Thumbnail 4" data-src="img/game3/game3_thumb4.jpg">
+                </div>
+                <div class="game-action">
+                    <button class="buy-button" data-id="game3">Купить</button>
+                    <span class="game-price">2999 руб.</span>
+                </div>
+            </div>
+        </div>
+        <div class="game-container" id="game4">
+            <div class="game-image">
+                <img src="img/game4/game4_large.jpg" alt="Game Large Image">
+            </div>
+            <div class="game-info">
+                <h3 class="game-title">Snake</h3>
+                <p class="game-description">
+                    Классическая аркадная игра, в которой вы управляете змейкой, поедающей еду и растущей с каждым движением. Проверьте свои навыки и рефлексы, стараясь не столкнуться с препятствиями и своим хвостом!
+                </p>
+                <div class="game-thumbnails">
+                    <img src="img/game4/game4_thumb1.jpg" alt="Thumbnail 1" data-src="img/game4/game4_thumb1.jpg">
+                    <img src="img/game4/game4_thumb2.jpg" alt="Thumbnail 2" data-src="img/game4/game4_thumb2.jpg">
+                    <img src="img/game4/game4_thumb3.jpg" alt="Thumbnail 3" data-src="img/game4/game4_thumb3.jpg">
+                    <img src="img/game4/game4_thumb4.jpg" alt="Thumbnail 4" data-src="img/game4/game4_thumb4.jpg">
+                </div>
+                <div class="game-action">
+                    <button class="buy-button" data-id="game4">Купить</button>
+                    <span class="game-price">БЕСПЛАТНО</span>
+                </div>
+            </div>
+        </div>
+        <div class="slider-indicators">
+            <div class="indicator active" data-index="0"></div>
+            <div class="indicator" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+            <div class="indicator" data-index="3"></div>
+        </div>
+    </div>
+
+    <!-- Попап с прогрессбаром -->
+    <div id="add-to-cart-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Товар добавлен в корзину!</h3>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption"></div>
+    </div>
+
+    <!-- Блок с категориями -->
+    <div class="categories">
+        <h2 class="section-title">КАТЕГОРИИ</h2>
+        <div class="categories-container">
+            <div class="category">
+                <img src="img/category1.jpg" alt="Открытый Мир">
+                <div class="category-label">ОТКРЫТЫЙ МИР</div>
+            </div>
+            <div class="category">
+                <img src="img/category2.jpg" alt="Ролевые Игры">
+                <div class="category-label">РОЛЕВЫЕ ИГРЫ</div>
+            </div>
+            <div class="category">
+                <img src="img/category3.jpg" alt="Бесплатно">
+                <div class="category-label">БЕСПЛАТНО</div>
+            </div>
+            <div class="category">
+                <img src="img/category4.jpg" alt="Аниме">
+                <div class="category-label">АНИМЕ</div>
+            </div>
+            <div class="category">
+                <img src="img/category5.jpg" alt="Стратегия">
+                <div class="category-label">СТРАТЕГИЯ</div>
+            </div>
+        </div>
+        <button class="more-button">Узнать больше</button>
+    </div>
+
+    <!-- Попап для сообщения "В разработке" -->
+    <div id="development-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Извините, эта функция в разработке!</h3>
+            <p>Мы работаем над этим и скоро всё будет готово.</p>
+        </div>
+    </div>
+
+    <!-- Футер сайта -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/GameForge Logo_White.png" alt="GameFORGE Logo">
+        </div>
+        <div class="footer-links">
+            <div class="column">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Работа</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Политика</h4>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Соглашение</a></li>
+                    <li><a href="#">Возврат</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="https://vk.com" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 GameFORGE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Подключение скрипта -->
+    <script src="script-index.js"></script>
+</body>
+</html>

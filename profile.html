@@ -1,0 +1,192 @@
+<!-- profile.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="styles-profile.css">
+    <link rel="icon" href="img/logo.png" type="image/icon type">
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="img/GameForge Logo_Black.png" alt="GameFORGE Logo"></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="library.html">Библиотека</a></li>
+            </ul>
+        </nav>
+        <div class="profile-section">
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="profile-icon">Профиль</a>
+        </div>
+    </header>
+
+    <!-- Основной контент профиля -->
+    <main class="profile-main">
+        <section class="profile-header">
+            <div class="profile-avatar">
+                <img id="avatar" src="img/user.png" alt="Avatar">
+            </div>
+            <div class="profile-info">
+                <h2 id="username">Имя пользователя</h2>
+                <p id="bio">Описание профиля...</p>
+                <form id="edit-form" class="edit-form" style="display: none;">
+                    <input type="text" id="new-username" placeholder="Новое имя">
+                    <textarea id="new-bio" placeholder="Новое описание"></textarea>
+                    <button type="button" id="save-changes-btn">Сохранить</button>
+                    <button type="button" id="cancel-edit-btn">Отмена</button>
+                </form>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="games-count">10</span>
+                        <span class="stat-label">Игр</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="friends-count">3</span>
+                        <span class="stat-label">Друзей</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-level">
+                <div class="level-circle">
+                    <span id="level">3</span>
+                </div>
+                <span class="level-label">Уровень</span>
+            </div>
+        </section>
+
+        <section class="profile-content">
+            <div class="profile-wall">
+                <h2 class="section-title">Моя стена</h2>
+                <form id="post-form">
+                    <textarea id="post-input" placeholder="Что нового?" required></textarea>
+                    <div class="post-upload">
+                        <label for="post-image-upload" class="upload-label">
+                            <i class="fas fa-image"></i> Прикрепить изображение
+                        </label>
+                        <input type="file" id="post-image-upload" accept="image/*" style="display: none;">
+                        <div id="preview-container" class="preview-container"></div>
+                    </div>
+                    <button type="submit">Опубликовать</button>
+                </form>
+                <div id="posts-container" class="posts-container">
+                    <!-- Здесь будут отображаться посты -->
+                </div>
+            </div>
+            <div class="profile-sidebar">
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="friends">Друзья</button>
+                    <button class="tab-button" data-tab="games">Игры</button>
+                    <button class="tab-button" data-tab="settings">Настройки</button>
+                </div>
+                <div class="tab-content active" id="friends-tab">
+                    <div class="friends-list">
+                        <div class="friend-item">
+                            <img src="img/friend1.png" alt="Friend 1">
+                            <span>Друг 1</span>
+                        </div>
+                        <div class="friend-item">
+                            <img src="img/friend2.png" alt="Friend 2">
+                            <span>Друг 2</span>
+                        </div>
+                        <div class="friend-item">
+                            <img src="img/friend3.png" alt="Friend 3">
+                            <span>Друг 3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="games-tab">
+                    <div class="games-list">
+                        <!-- Здесь будут отображаться купленные игры -->
+                    </div>
+                </div>
+                <div class="tab-content" id="settings-tab">
+                    <div class="settings-buttons">
+                        <button type="button" id="edit-info-settings-btn">Редактировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Попап уведомлений -->
+    <div id="notification-popup" class="notification-popup" style="display: none;">
+        <div class="popup-content">
+            <span id="notification-message"></span>
+            <button id="close-notification-btn" class="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <!-- Попап для сообщения "В разработке" -->
+    <div id="development-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Извините, эта функция в разработке!</h3>
+            <p>Мы работаем над этим и скоро всё будет готово.</p>
+        </div>
+    </div>
+
+    <!-- Кнопка отладки -->
+    <button id="debug-btn" class="debug-btn">
+        <i class="fas fa-bug"></i>
+    </button>
+
+    <!-- Попап отладки -->
+    <div id="debug-popup" class="debug-popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Отладка</h3>
+            <button type="button" id="clear-posts-btn-debug">Очистить комментарии</button>
+            <button type="button" id="clear-games-btn-debug">Очистить купленные игры</button>
+            <button type="button" id="clear-all-btn-debug">Очистить всё</button>
+            <button id="close-debug-btn" class="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <!-- Футер сайта -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/GameForge Logo_White.png" alt="GameFORGE Logo">
+        </div>
+        <div class="footer-links">
+            <div class="column">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Работа</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Политика</h4>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Соглашение</a></li>
+                    <li><a href="#">Возврат</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="https://vk.com" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 GameFORGE. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Подключение скрипта -->
+    <script src="script-profile.js"></script>
+</body>
+</html>
