@@ -26,60 +26,64 @@ document.addEventListener('DOMContentLoaded', function() {
         let games = JSON.parse(localStorage.getItem('games') || '[]');
         let totalPrice = 0;
         let hasPurchasableItems = false;
-    
+        let hasFreeGamesToPurchase = false;
+
         cartItemsElement.innerHTML = '';
-    
+
         cartItems.forEach((item, index) => {
             const cartItemDiv = document.createElement('div');
             cartItemDiv.className = 'cart-item';
-    
+
             const gameImage = document.createElement('img');
             gameImage.className = 'cart-item-image';
             gameImage.src = item.imageUrl || `img/${item.id}/${item.id}_large.jpg`;
             gameImage.alt = item.title;
-    
+
             const gameTitleSpan = document.createElement('span');
             gameTitleSpan.className = 'cart-item-title';
             gameTitleSpan.textContent = item.title;
-    
+
             const gamePriceSpan = document.createElement('span');
             gamePriceSpan.className = 'cart-item-price';
-            
-            if (games.some(game => game.id === item.id)) {
+
+            const isAlreadyPurchased = games.some(game => game.id === item.id);
+
+            if (isAlreadyPurchased) {
                 gamePriceSpan.innerHTML = `<i class="fas fa-ban" title="Невозможно купить повторно"></i> ${item.price === null || item.price === 'БЕСПЛАТНО' ? 'БЕСПЛАТНО' : item.price + ' руб.'}`;
                 cartItemDiv.classList.add('non-purchasable');
             } else {
                 if (item.price === null || item.price === 'БЕСПЛАТНО') {
                     gamePriceSpan.textContent = 'БЕСПЛАТНО';
+                    hasFreeGamesToPurchase = true;
                 } else {
                     gamePriceSpan.textContent = `${item.price} руб.`;
                     totalPrice += parseInt(item.price) || 0;
                     hasPurchasableItems = true;
                 }
             }
-    
+
             const removeButton = document.createElement('button');
             removeButton.className = 'remove-button';
             removeButton.innerHTML = '×';
             removeButton.addEventListener('click', function() {
                 removeCartItem(index);
             });
-    
+
             cartItemDiv.appendChild(removeButton);
             cartItemDiv.appendChild(gameImage);
             cartItemDiv.appendChild(gameTitleSpan);
             cartItemDiv.appendChild(gamePriceSpan);
             cartItemsElement.appendChild(cartItemDiv);
         });
-    
+
         totalPriceElement.textContent = `${totalPrice.toLocaleString('ru-RU')} руб.`;
         cartCountElement.textContent = cartItems.length;
-    
-        // Disable the checkout button if there are no purchasable items
+
+        // Disable the checkout button if there are no purchasable items and no free games to purchase
         if (checkoutButton) {
-            checkoutButton.disabled = !hasPurchasableItems;
-            checkoutButton.style.opacity = hasPurchasableItems ? '1' : '0.5';
-            checkoutButton.style.cursor = hasPurchasableItems ? 'pointer' : 'not-allowed';
+            checkoutButton.disabled = !hasPurchasableItems && !hasFreeGamesToPurchase;
+            checkoutButton.style.opacity = hasPurchasableItems || hasFreeGamesToPurchase ? '1' : '0.5';
+            checkoutButton.style.cursor = hasPurchasableItems || hasFreeGamesToPurchase ? 'pointer' : 'not-allowed';
         }
     }
 
@@ -117,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to show empty cart popup
     function showEmptyCartPopup() {
         emptyCartPopup.style.display = 'block';
-    
+
         setTimeout(function() {
             emptyCartPopup.style.display = 'none';
         }, 3000);
@@ -126,13 +130,49 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for checkout button
     checkoutButton.addEventListener('click', function() {
         let cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+        let games = JSON.parse(localStorage.getItem('games') || '[]');
+        let hasPurchasableItems = false;
+        let hasFreeGamesToPurchase = false;
+
+        cartItems.forEach(item => {
+            if (!games.some(game => game.id === item.id)) {
+                if (item.price !== null && item.price !== 'БЕСПЛАТНО') {
+                    hasPurchasableItems = true;
+                } else {
+                    hasFreeGamesToPurchase = true;
+                }
+            }
+        });
 
         if (cartItems.length === 0) {
             showEmptyCartPopup();
+        } else if (hasFreeGamesToPurchase && !hasPurchasableItems) {
+            handleFreeGamesPurchase();
         } else {
             openPaymentModal();
         }
     });
+
+    // Function to handle free games purchase
+    function handleFreeGamesPurchase() {
+        let cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+        let games = JSON.parse(localStorage.getItem('games') || '[]');
+
+        cartItems.forEach(item => {
+            if (!games.some(game => game.id === item.id)) {
+                games.push({
+                    id: item.id,
+                    title: item.title,
+                    imageUrl: item.imageUrl
+                });
+            }
+        });
+
+        localStorage.setItem('games', JSON.stringify(games));
+        localStorage.removeItem('cart');
+        displayCartItems();
+        showSuccessPaymentPopup();
+    }
 
     // Event listeners for closing modal
     closeModal.addEventListener('click', closePaymentModal);
@@ -196,7 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cardCVCElement.textContent = 'CVC: ' + (e.target.value || '***');
     });
 
-    // Event listener for payment submission
     // Event listener for payment submission
     submitPaymentButton.addEventListener('click', function() {
         // Check if all fields are filled
